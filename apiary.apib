@@ -65,7 +65,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`string`|10||Required|
-|Topic|Topic|`string`|20|||
+|Topic|Topic|`string`|20||Required|
 
 + Request (application/json)
     + Header
@@ -74,7 +74,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Parameters
     + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-
+    + Topic (required, string, `Elephants`) ... Topic of.
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes (200 SuccessResponse)
@@ -168,6 +168,9 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Response 404 (application/json; charset=utf-8)
     + Attributes (404 Response)
+
+
+
 
 
 
