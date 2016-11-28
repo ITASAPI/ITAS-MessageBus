@@ -20,7 +20,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 
 + Response 201 (application/json; charset=utf-8)
-    + Attributes (201 CreateResponse)
+    + Attributes (201 ConfirmedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -49,7 +49,7 @@ Endpoints to work with the V2 ITAS Messaging system
     + Topic (required, string, `Elephants`) ... Topic of.
 
 + Response 201 (application/json; charset=utf-8)
-    + Attributes (201 CreateResponse)
+    + Attributes (201 ConfirmedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -316,7 +316,7 @@ Endpoints to work with the V2 ITAS Messaging system
     + Topic (required, string, `Elephants`) ... Identify specific Topic.
 
 + Response 200 (application/json; charset=utf-8)
-    + Attributes (200 SuccessResponse)
+    + Attributes (201 ConfirmedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -339,6 +339,9 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## 201 CreateResponse (object)
 + Value: Created (string)
+
+## 201 ConfirmedResponse (object)
++ Value: Confirmed (string)
 
 ## 201 UpdateResponse (object)
 + Value: Updated (string)
