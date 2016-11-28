@@ -51,16 +51,13 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Parameters
     + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + Topic (required, string, `Elephants`) ... Topic of.
+    + Topic (required, string, `LetMeKnow`) ... Topic of.
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes (201 ConfirmedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
-
-+ Response 404 (application/json; charset=utf-8)
-    + Attributes (404 Response)
 
 
 
@@ -79,7 +76,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Parameters
     + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + Topic (required, string, `Elephants`) ... Topic of.
+    + Topic (required, string, `LetMeKnow`) ... Topic of.
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes (200 SuccessResponse)
@@ -111,7 +108,9 @@ Endpoints to work with the V2 ITAS Messaging system
 
 
 + Response 200 (application/json; charset=utf-8)
-    + Attributes (200 SuccessResponse)
+    + Attributes 
+        + Data (Subscriptions) 
+        + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -387,6 +386,12 @@ Endpoints to work with the V2 ITAS Messaging system
 + Top: 200 (number) - max number returned per message 
 + Skip: 400 (number) - number of records skipped
 + Returned: 146 (number) - actual number returned
+
+## Subscriptions (object)
++ SubscriberId (array [SubscriberTopicList])
+
+## SubscriberTopicList (object)
++ Topic: LetMeKnow (string)
 
 ## UserName (object)
 + UserName: IPERSON (string)
