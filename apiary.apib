@@ -63,12 +63,12 @@ Endpoints to work with the V2 ITAS Messaging system
 
 
 
-### Remove Subscription [DELETE]
+### Remove Topic Subscription [DELETE]
 `DELETE` Removes Subscription to Topic
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|SubscriberId|Subscriber ID|`string`|10||Required|
+|SubscriberId|Subscriber ID|`number`|||Required|
 |Topic|Topic|`string`|20||Required|
 
 + Request (application/json)
@@ -77,17 +77,16 @@ Endpoints to work with the V2 ITAS Messaging system
             AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
 + Parameters
-    + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + Topic (required, string, `LetMeKnow`) ... Topic of.
+    + SubscriberId (required, number, `1234`) ... Identify specific subscriber ID.
+    + Topic (required, string, `LetMeKnow`) ... Identify specific Topic.
 
 + Response 200 (application/json; charset=utf-8)
-    + Attributes (200 SuccessResponse)
+    + Attributes 
+        + Data (RemoveTopicSubscription)
+        + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json; charset=utf-8)
-    + Attributes (404 Response)
+    + Attributes (400 BadPostResponse)
 
 
 ## Current Subscription [/Bus/Subscription/{SubscriberId}/subscriptions]
@@ -374,7 +373,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## 400 BadPostErrorMessageDetail (object)
 + Severity: Error (string)
-+ Message: `API5075 - API : The value sent in the querystring is not unique.` (string)
++ Message: `API5075 - API : The value sent in the querystring is not valid.` (string)
 
 ## 404 Response (object)
 + Response
@@ -397,6 +396,11 @@ Endpoints to work with the V2 ITAS Messaging system
 + Top: 200 (number) - max number returned per message 
 + Skip: 400 (number) - number of records skipped
 + Returned: 146 (number) - actual number returned
+
+## RemoveTopicSubscription (object)
++ SubscriberId: 1234 (number)
++ Topic: LetMeKnow (string)
++ Action: Deleted (string)
 
 ## Subscriptions (object)
 + SubscriberId: IPERSON1234 (string) 
