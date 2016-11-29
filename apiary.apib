@@ -180,78 +180,16 @@ Endpoints to work with the V2 ITAS Messaging system
 
 # Group Events Service Messages
 
-## Receive Top Message [/Bus/Message/Receive/{SubscriberId}/{Topic}]
-`GET` Returns full details of the Top Message
-
-### Receive Top Message [GET]
-
-|Property|Description|Type|Max Length|Notes|Constraint|
-|--------|-----------|----|----------|-----|----------|
-|SubscriberId|Subscriber ID|`string`|10||Required|
-|Topic|Topic|`string`|20|||
-
-+ Request (application/json)
-    + Header
-
-            AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-
-+ Parameters
-    + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + Topic (optional, string, `Elephants`) ... Topic of.
-
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes (200 SuccessResponse)
-
-+ Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json; charset=utf-8)
-    + Attributes (404 Response)
-
-
-## Messages List [/Bus/Message/Peek/{SubscriberId}/{Topic}]
-`GET` List of all message Ids and a count of all messages
-
-### List Messages [GET]
-
-|Property|Description|Type|Max Length|Notes|Constraint|
-|--------|-----------|----|----------|-----|----------|
-|SubscriberId|Subscriber ID|`string`|10||Required|
-|Topic|Topic|`string`|20|||
-
-+ Request (application/json)
-    + Header
-
-            AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-
-+ Parameters
-    + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + Topic (optional, string, `Elephants`) ... Topic of.
-
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes 
-        + Data (array [Message List])
-        + Pagination (Pagination)
-        + Response (200 SuccessResponse)
-
-
-+ Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json; charset=utf-8)
-    + Attributes (404 Response)
-
-## Receive Message [/Bus/Message/Receive/{SubscriberId}/{MessageId}]
-`GET` Returns full details of a Specified Message
+## Receive Message [/Bus/Message/Receive/{SubscriberId}]
+`GET` Returns details of the Message
 
 ### Receive Message [GET]
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|SubscriberId|Subscriber ID|`string`|10||Required|
-|MessageId|Message ID|`string`|20||Required|
+|SubscriberId|Subscriber ID|`number`|||Required|
+|Topic|Topic|`string`|20|||
+|MessageBody|Message Body|`string`||||
 
 + Request (application/json)
     + Header
@@ -260,11 +198,12 @@ Endpoints to work with the V2 ITAS Messaging system
 
 
 + Parameters
-    + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + MessageId (required, string, `MESS1`) ... Indentify specific message ID
+    + SubscriberId (required, number, `1234`) ... Identify specific subscriber ID.
 
 + Response 200 (application/json; charset=utf-8)
-    + Attributes (200 SuccessResponse)
+    + Attributes 
+        + Data (ReceiveMessage)
+        + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -395,6 +334,9 @@ Endpoints to work with the V2 ITAS Messaging system
 + SubscriberId: 1234 (number)
 + Action: Remove Subscriptions (string)
 
+## MessageBody (object)
++ Body: The Body of the Message (string)
+
 ## Message List (object)
 + MessageId: ABC123 (string)
 
@@ -403,6 +345,11 @@ Endpoints to work with the V2 ITAS Messaging system
 + Top: 200 (number) - max number returned per message 
 + Skip: 400 (number) - number of records skipped
 + Returned: 146 (number) - actual number returned
+
+## ReceiveMessage (object)
++ SubscriberId: 1234 (number)
++ Topic: LetMeKnow (string)
++ MessageBody (MessageBody)
 
 ## RemoveSubscriber (object)
 + SubscriberId: 1234 (number)
