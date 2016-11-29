@@ -31,7 +31,7 @@ Endpoints to work with the V2 ITAS Messaging system
         + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
+    + Attributes (400 BadPostResponse)
 
 
 ## User Topic Subscription [/Bus/Subscription/{SubscriberId}/{Topic}]
@@ -41,7 +41,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|SubscriberId|Subscriber ID|`string`|10||Required|
+|SubscriberId|Subscriber ID|`number`|||Required|
 |Topic|Topic|`string`|20||Required|
 
 + Request (application/json)
@@ -50,14 +50,16 @@ Endpoints to work with the V2 ITAS Messaging system
             AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
 + Parameters
-    + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
-    + Topic (required, string, `LetMeKnow`) ... Topic of.
+    + SubscriberId (required, number, `1234`) ... Identify specific subscriber ID.
+    + Topic (required, string, `LetMeKnow`) ... Identify specific Topic.
 
 + Response 201 (application/json; charset=utf-8)
-    + Attributes (201 ConfirmedResponse)
+    + Attributes 
+        + Data (TopicSubscription)
+        + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
+    + Attributes (400 BadPostResponse)
 
 
 
@@ -352,6 +354,10 @@ Endpoints to work with the V2 ITAS Messaging system
     + Value: 400 Bad Request (string)
 + Messages (array [400 ErrorMessageDetail])
 
+## 400 ErrorMessageDetail (object)
++ Severity: Error (string)
++ Message: `API5058 - Data : The mandatory field {fieldName} was missing in the request body.` (string)
+
 ## 400 BadPropertyResponse (object)
 + Response
     + Value: 400 Bad Request (string)
@@ -361,9 +367,14 @@ Endpoints to work with the V2 ITAS Messaging system
 + Severity: Error (string)
 + Message: `API5068 - API : The value sent in the querystring variable {Property} is not allowed.` (string)
 
-## 400 ErrorMessageDetail (object)
+## 400 BadPostResponse (object)
++ Response
+    + Value: 400 Bad Request (string)
++ Messages (array[400 BadPostErrorMessageDetail])
+
+## 400 BadPostErrorMessageDetail (object)
 + Severity: Error (string)
-+ Message: `API5058 - Data : The mandatory field {fieldName} was missing in the request body.` (string)
++ Message: `API5075 - API : The value sent in the querystring is not unique.` (string)
 
 ## 404 Response (object)
 + Response
@@ -392,6 +403,10 @@ Endpoints to work with the V2 ITAS Messaging system
 + TopicList (array [SubscriberTopicList])
 
 ## SubscriberTopicList (object)
++ Topic: LetMeKnow (string)
+
+## TopicSubscription (object)
++ SubscriberId: 1234 (number)
 + Topic: LetMeKnow (string)
 
 ## UserRegistration (object)
