@@ -70,7 +70,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
 |Topic|Topic|`string`|20||Required|
-|Action|Action|`string`||||
+|Action|Action Performed|`string`||||
 
 + Request (application/json)
     + Header
@@ -90,7 +90,7 @@ Endpoints to work with the V2 ITAS Messaging system
     + Attributes (400 BadPostResponse)
 
 
-## Current Subscription [/Bus/Subscription/{SubscriberId}/subscriptions]
+## Current Subscription [/Bus/Subscription/{SubscriberId}/Subscriptions]
 `GET` View Current Subscriptions
 
 ### Current Subscription [GET]
@@ -129,7 +129,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
-|Action|Action|`string`||||
+|Action|Action Performed|`string`||||
 
 + Request (application/json)
     + Header
@@ -156,7 +156,9 @@ Endpoints to work with the V2 ITAS Messaging system
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|SubscriberId|Subscriber ID|`string`|10||Required|
+|SubscriberId|Subscriber ID|`number`|||Required|
+|Action|Action Performed|`string`||||
+
 
 + Request (application/json)
     + Header
@@ -164,17 +166,16 @@ Endpoints to work with the V2 ITAS Messaging system
             AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
 + Parameters
-    + SubscriberId (required, string, `ABC123`) ... Identify specific subscriber ID.
+    + SubscriberId (required, number, `1234`) ... Identify specific subscriber ID.
 
 
 + Response 200 (application/json; charset=utf-8)
-    + Attributes (200 SuccessResponse)
+    + Attributes 
+        + Data (RemoveSubscriber)
+        + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json; charset=utf-8)
-    + Attributes (404 Response)
+    + Attributes (400 BadPostResponse)
 
 
 # Group Events Service Messages
@@ -384,7 +385,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## 404 ErrorMessageDetailMessage (object)
 + Severity: Warning (string)
-+ Message: `API5067 - API : The value {TradingEntityId} sent as the TradingEntitiyId does not exist.` (string)
++ Message: `API5067 - API : The value {SubscriberId} sent as the SubscriberId does not exist.` (string)
 
 
 ## accessToken (object)
@@ -402,6 +403,10 @@ Endpoints to work with the V2 ITAS Messaging system
 + Top: 200 (number) - max number returned per message 
 + Skip: 400 (number) - number of records skipped
 + Returned: 146 (number) - actual number returned
+
+## RemoveSubscriber (object)
++ SubscriberId: 1234 (number)
++ Action: Remove Subscriber (string)
 
 ## RemoveTopicSubscription (object)
 + SubscriberId: 1234 (number)
