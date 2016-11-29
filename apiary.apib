@@ -250,7 +250,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|Topic|Topic Name|`string`|10||Required|
+|Topic|Topic|`string`|20||Required|
 
 + Request (application/json)
     + Header
@@ -259,16 +259,14 @@ Endpoints to work with the V2 ITAS Messaging system
 
 
 + Parameters
-    + Topic (required, string, `Elephants`) ... Identify specific Topic.
+    + Topic (required, string, `LetMeKnow`) ... Identify specific Topic.
 
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes (201 ConfirmedResponse)
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json; charset=utf-8)
-    + Attributes (404 Response)
+    + Attributes (400 BadPostResponse)
 
 
 
