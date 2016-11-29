@@ -8,21 +8,19 @@ Endpoints to work with the V2 ITAS Messaging system
 
 # Group Events Service Subscriptions
 
-## User Registration [/Bus/Subscription/Register]
+## User Registration [/Bus/Subscription/Register/{SubscriberName}]
 `POST` Registers Users
 
 ### User Registration [POST]
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|UserName|User Name|`string`|20||Required|
+|SubscriberName|Subscriber Name|`string`|30||Required. Unique Key|
 
 + Request (application/json)
     + Header
 
             AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-    + Attributes (UserName)
 
 
 + Response 201 (application/json; charset=utf-8)
@@ -394,8 +392,6 @@ Endpoints to work with the V2 ITAS Messaging system
 ## SubscriberTopicList (object)
 + Topic: LetMeKnow (string)
 
-## UserName (object)
-+ UserName: IPERSON (string)
-
 ## UserRegistration (object)
-+ SubscriberId: IPERSON1234 (string)
++ SubscriberId: 1234 (number)
++ SubscriberName: IPERSON (string)
