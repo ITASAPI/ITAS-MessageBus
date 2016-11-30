@@ -273,7 +273,8 @@ Endpoints to work with the V2 ITAS Messaging system
     + Topic (required, string, `Example-Topic`) ... Identify specific Topic.
 
 + Response 201 (application/json; charset=utf-8)
-    + Attributes 
+    + Attributes
+        + Data (MessagePublish) 
         + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -359,11 +360,8 @@ Endpoints to work with the V2 ITAS Messaging system
 ## AllSubscriptionsRemoved (object)
 + SubscriberId: 1234 (number)
 
-## MessageBody (object)
-+ Message: The Body of the Message (string)
-
-## Message List (object)
-+ MessageId: ABC123 (string)
+## MessagePublish (object)
++ MessageId: 177 (number)
 
 ## Pagination (object)
 + Total: 547 (number) - total number of records available
