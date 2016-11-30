@@ -15,7 +15,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|SubscriberName|Subscriber Name|`string`|30||Required. Unique Key|
+|SubscriberName|Subscriber Name|`string`|20||Required. Unique Key|
 
 + Request (application/json)
     + Header
@@ -47,7 +47,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
-|Topic|Topic|`string`|20||Required|
+|Topic|Topic|`string`|30||Required|
 
 + Request (application/json)
     + Header
@@ -81,7 +81,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
-|Topic|Topic|`string`|20||Required|
+|Topic|Topic|`string`|30||Required|
 
 + Request (application/json)
     + Header
@@ -113,7 +113,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
 |<b>TopicList</b>||[array]||||
-|Topic|Topic|`string`|20|||
+|Topic|Topic|`string`|30|||
 
 + Request (application/json)
     + Header
@@ -207,7 +207,7 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
-|Topic|Topic|`string`|20|||
+|Topic|Topic|`string`|30|||
 |MessageId|Message ID|`number`||||
 |MessageBody|Message Body|`string`||||
 
@@ -271,7 +271,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|Topic|Topic|`string`|20||Required|
+|Topic|Topic|`string`|30||Required|
 
 + Request (application/json)
     + Header
