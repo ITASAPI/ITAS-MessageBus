@@ -8,10 +8,10 @@ Endpoints to work with the V2 ITAS Messaging system
 
 # Group Events Service Subscriptions
 
-## User Registration [/Bus/Subscription/Register/{SubscriberName}]
-`POST` Registers Users
+## Registration [/Bus/Subscription/Register/{SubscriberName}]
+`POST` Registers Subscriber
 
-### User Registration [POST]
+### Registration [POST]
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -34,10 +34,10 @@ Endpoints to work with the V2 ITAS Messaging system
     + Attributes (400 BadPostResponse)
 
 
-## User Topic Subscription [/Bus/Subscription/{SubscriberId}/{Topic}]
-`POST` Subscribes user to a topic
+## Topic Subscription [/Bus/Subscription/{SubscriberId}/{Topic}]
+`POST` Subscribes to a topic
 
-### User Topic Subscription [POST]
+### Topic Subscription [POST]
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -61,6 +61,8 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
 
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
 
 
 ### Remove Topic Subscription [DELETE]
@@ -89,6 +91,9 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
 
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
 
 ## Current Subscription [/Bus/Subscription/{SubscriberId}/Subscriptions]
 `GET` View Current Subscriptions
@@ -112,7 +117,8 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (Subscriptions) 
+        + Data (Subscriptions)
+        + Pagination (Pagination)
         + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -148,6 +154,9 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
 
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
 
 ## Remove Subscriber [/Bus/Subscription/{SubscriberId}]
 `DELETE` Removes Subscriber
@@ -176,6 +185,9 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
 
 
 # Group Events Service Messages
@@ -242,6 +254,9 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
 
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
 
 ## Publish Message [/Bus/Message/Publish/{Topic}]
 `POST` Adds a message to the queue using specified topic
@@ -259,7 +274,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 
 + Parameters
-    + Topic (required, string, `LetMeKnow`) ... Identify specific Topic.
+    + Topic (required, string, `Example-Topic`) ... Identify specific Topic.
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
@@ -267,6 +282,9 @@ Endpoints to work with the V2 ITAS Messaging system
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
 
 
 
@@ -348,7 +366,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## ReceiveMessage (object)
 + SubscriberId: 1234 (number)
-+ Topic: LetMeKnow (string)
++ Topic: `Example-Topic` (string)
 + MessageId: 177 (number)
 + MessageBody (MessageBody)
 
@@ -363,7 +381,7 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## RemoveTopicSubscription (object)
 + SubscriberId: 1234 (number)
-+ Topic: LetMeKnow (string)
++ Topic: `Example-Topic` (string)
 + Action: Delete (string)
 
 ## Subscriptions (object)
@@ -371,11 +389,11 @@ Endpoints to work with the V2 ITAS Messaging system
 + TopicList (array [SubscriberTopicList])
 
 ## SubscriberTopicList (object)
-+ Topic: LetMeKnow (string)
++ Topic: `Example-Topic` (string)
 
 ## TopicSubscription (object)
 + SubscriberId: 1234 (number)
-+ Topic: LetMeKnow (string)
++ Topic: `Example-Topic` (string)
 
 ## UserRegistration (object)
 + SubscriberId: 1234 (number)
