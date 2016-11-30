@@ -94,10 +94,10 @@ Endpoints to work with the V2 ITAS Messaging system
     + Attributes (404 Response)
 
 
-## Current Subscription [/Bus/Subscription/{SubscriberId}/Subscriptions]
+## Current Subscription List [/Bus/Subscription/{SubscriberId}/Subscriptions]
 `GET` View Current Subscriptions
 
-### Current Subscription [GET]
+### List Current Subscription [GET]
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -375,7 +375,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + SubscriberId: 1234 (number)
 + Topic: `Example-Topic` (string)
 + MessageId: 177 (number)
-+ MessageBody (MessageBody)
++ MessageBody: `Example-Body` (string)
 
 ## RemoveMessage (object)
 + SubscriberId: 1234 (number)
