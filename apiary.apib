@@ -30,6 +30,11 @@ Endpoints to work with the V2 ITAS Messaging system
         + Data (UserRegistration)
         + Response (201 CreateResponse)
 
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (UserRegistration)
+        + Response (200 SuccessResponse)
+
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
 
@@ -57,6 +62,11 @@ Endpoints to work with the V2 ITAS Messaging system
     + Attributes 
         + Data (TopicSubscription)
         + Response (201 CreateResponse)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (TopicSubscription)
+        + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -147,7 +157,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (AllSubscriptionsRemoved)
-        + Response (200 SuccessRemovedAllResponse)
+        + Response (200 SuccessDeletedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -178,7 +188,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (RemoveSubscriber)
-        + Response (200 SuccessRemovedSubscResponse)
+        + Response (200 SuccessDeletedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -273,9 +283,7 @@ Endpoints to work with the V2 ITAS Messaging system
     + Topic (required, string, `Example-Topic`) ... Identify specific Topic.
 
 + Response 201 (application/json; charset=utf-8)
-    + Attributes
-        + Data (MessagePublish) 
-        + Response (201 CreateResponse)
+    + Attributes (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -291,16 +299,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Value: Success (string)
 
 ## 200 SuccessDeletedResponse (object)
-+ Value: Success (string)
-+ Action: Deleted (string)
-
-## 200 SuccessRemovedAllResponse (object)
-+ Value: Success (string)
-+ Action: Removed All (string)
-
-## 200 SuccessRemovedSubscResponse (object)
-+ Value: Success (string)
-+ Action: Removed Subscriber (string)
++ Value: Deleted (string)
 
 ## 200 CreateResponse (object)
 + Value: Created (string)
@@ -359,9 +358,6 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## AllSubscriptionsRemoved (object)
 + SubscriberId: 1234 (number)
-
-## MessagePublish (object)
-+ MessageId: 177 (number)
 
 ## Pagination (object)
 + Total: 547 (number) - total number of records available
