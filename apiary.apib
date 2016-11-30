@@ -72,7 +72,6 @@ Endpoints to work with the V2 ITAS Messaging system
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
 |Topic|Topic|`string`|20||Required|
-|Action|Action Performed|`string`||||
 
 + Request (application/json)
     + Header
@@ -86,7 +85,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (RemoveTopicSubscription)
-        + Response (200 SuccessResponse)
+        + Response (200 SuccessDeletedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -135,7 +134,6 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
-|Action|Action Performed|`string`||||
 
 + Request (application/json)
     + Header
@@ -149,7 +147,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (AllSubscriptionsRemoved)
-        + Response (200 SuccessResponse)
+        + Response (200 SuccessRemovedAllResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -166,7 +164,6 @@ Endpoints to work with the V2 ITAS Messaging system
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
-|Action|Action Performed|`string`||||
 
 
 + Request (application/json)
@@ -181,7 +178,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (RemoveSubscriber)
-        + Response (200 SuccessResponse)
+        + Response (200 SuccessRemovedSubscResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -234,7 +231,6 @@ Endpoints to work with the V2 ITAS Messaging system
 |--------|-----------|----|----------|-----|----------|
 |SubscriberId|Subscriber ID|`number`|||Required|
 |MessageId|Message ID|`number`|||Required|
-|Action|Action Performed|`string`||||
 
 + Request (application/json)
     + Header
@@ -249,7 +245,7 @@ Endpoints to work with the V2 ITAS Messaging system
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (RemoveMessage)
-        + Response (200 SuccessResponse)
+        + Response (200 SuccessDeletedResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 BadPostResponse)
@@ -292,6 +288,18 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## 200 SuccessResponse (object)
 + Value: Success (string)
+
+## 200 SuccessDeletedResponse (object)
++ Value: Success (string)
++ Action: Deleted (string)
+
+## 200 SuccessRemovedAllResponse (object)
++ Value: Success (string)
++ Action: Removed All (string)
+
+## 200 SuccessRemovedSubscResponse (object)
++ Value: Success (string)
++ Action: Removed Subscriber (string)
 
 ## 200 CreateResponse (object)
 + Value: Created (string)
@@ -350,7 +358,6 @@ Endpoints to work with the V2 ITAS Messaging system
 
 ## AllSubscriptionsRemoved (object)
 + SubscriberId: 1234 (number)
-+ Action: Remove All (string)
 
 ## MessageBody (object)
 + Message: The Body of the Message (string)
@@ -373,16 +380,13 @@ Endpoints to work with the V2 ITAS Messaging system
 ## RemoveMessage (object)
 + SubscriberId: 1234 (number)
 + MessageId: 177 (number)
-+ Action: Delete (string)
 
 ## RemoveSubscriber (object)
 + SubscriberId: 1234 (number)
-+ Action: Remove Subscriber (string)
 
 ## RemoveTopicSubscription (object)
 + SubscriberId: 1234 (number)
 + Topic: `Example-Topic` (string)
-+ Action: Delete (string)
 
 ## Subscriptions (object)
 + SubscriberId: 1234 (number) 
